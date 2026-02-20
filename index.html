@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>💖 Happy Birthday Ann 💖</title>
+    <title>Ann 💖 Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(145deg, #4158D0, #C850C0, #FFCC70);
             min-height: 100vh;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #ee9ca7);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 10px;
-            margin: 0;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* INTRO SCREEN */
@@ -30,11 +37,539 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: #000;
+            background: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            text-align: center;
+        }
+
+        #introScreen h1 {
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        #enterBtn {
+            padding: 18px 50px;
+            border: none;
+            border-radius: 60px;
+            background: #ff2e63;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 46, 99, 0.5);
+            transition: all 0.3s;
+            min-width: 250px;
+            border: 2px solid white;
+        }
+
+        #enterBtn:active {
+            transform: scale(0.95);
+            background: #ff1744;
+        }
+
+        /* APP CONTAINER */
+        .app-container {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 30px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            background: linear-gradient(45deg, #ff2e63, #ff6b81);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        /* SLIDER */
+        .slides {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            max-height: 400px;
+            margin: 20px 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .controls button {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: #ff2e63;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* MESSAGE BOX */
+        .message-box {
+            margin: 25px 0;
+        }
+
+        #dynamicMessage {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .message-box button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #ff2e63;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        /* INTERACTIVE */
+        .interactive {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .interactive button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 30px;
+            background: #ff2e63;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            min-width: 130px;
+        }
+
+        .love-counter {
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            min-width: 130px;
+        }
+
+        #darkToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #ff2e63;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* MODAL */
+        #secretModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+
+        #secretModal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modalContent {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 350px;
+            width: 90%;
+        }
+
+        .modalContent button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #ff2e63;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+        }
+
+        /* Mobile fixes */
+        @media (max-width: 480px) {
+            .app-container {
+                padding: 15px;
+            }
+            
+            .interactive button,
+            .love-counter,
+            .message-box button {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- INTRO SCREEN -->
+    <div id="introScreen">
+        <h1>For Ann 💖</h1>
+        <button id="enterBtn">ENTER</button>
+    </div>
+
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="darkToggle">🌙</button>
+
+    <!-- MAIN APP (HIDDEN INITIALLY) -->
+    <div class="app-container hidden" id="appContainer">
+        <section class="hero">
+            <h1>Happy Birthday Ann 🎂</h1>
+            <p id="typewriter"></p>
+            <h3>✨ The Best Colleague & A Beautiful Soul ✨</h3>
+        </section>
+
+        <!-- PHOTO SLIDER -->
+        <section class="slider">
+            <div class="slides" id="sliderContainer">
+                <img src="IMG_20251116_080454_672.jpg" class="slide active" alt="Ann 1">
+                <img src="IMG_20251116_060838_751.jpg" class="slide" alt="Ann 2">
+                <img src="IMG-20251113-WA0001.jpg" class="slide" alt="Ann 3">
+                <img src="IMG_20251126_203951_702.jpg" class="slide" alt="Ann 4">
+                <img src="IMG_20251207_211756_696.jpg" class="slide" alt="Ann 5">
+                <img src="IMG_20251221_083850_887.jpg" class="slide" alt="Ann 6">
+                <img src="IMG_20251229_072508_367.jpg" class="slide" alt="Ann 7">
+                <img src="IMG_20260111_141537_322.jpg" class="slide" alt="Ann 8">
+            </div>
+            <div class="controls">
+                <button id="prev">⟨</button>
+                <button id="next">⟩</button>
+            </div>
+        </section>
+
+        <!-- MESSAGE BOX -->
+        <section class="message-box">
+            <p id="dynamicMessage">You make work brighter and life softer 💖</p>
+            <button id="newMessage">💌 New Message</button>
+        </section>
+
+        <!-- INTERACTIONS -->
+        <section class="interactive">
+            <div class="love-counter" id="loveCounter">
+                ❤️ <span id="loveCount">0</span>
+            </div>
+            <button id="confettiBtn">Celebrate 🎉</button>
+            <button id="secretBtn">Secret 💝</button>
+        </section>
+    </div>
+
+    <footer>
+        <p>Designed with love by <strong>HumTech Solutions ❤️</strong></p>
+        <p>📞 +254 721 112 164</p>
+    </footer>
+
+    <script>
+        // Wait for everything to load
+        window.addEventListener('load', function() {
+            console.log('Page loaded');
+            
+            // Get elements
+            const intro = document.getElementById('introScreen');
+            const app = document.getElementById('appContainer');
+            const enterBtn = document.getElementById('enterBtn');
+            const music = document.getElementById('bgMusic');
+            
+            console.log('Intro screen:', intro);
+            console.log('Enter button:', enterBtn);
+            
+            // ENTER BUTTON CLICK HANDLER
+            if (enterBtn) {
+                enterBtn.onclick = function() {
+                    console.log('Enter button clicked!');
+                    
+                    // Hide intro
+                    if (intro) {
+                        intro.style.display = 'none';
+                    }
+                    
+                    // Show app
+                    if (app) {
+                        app.classList.remove('hidden');
+                    }
+                    
+                    // Play music
+                    if (music) {
+                        music.volume = 0.3;
+                        music.play().catch(function(e) {
+                            console.log('Music play failed:', e);
+                        });
+                    }
+                    
+                    // Start typewriter
+                    startTypewriter();
+                    
+                    return false;
+                };
+            }
+            
+            // Typewriter effect
+            function startTypewriter() {
+                const text = "To the most caring, loving, intelligent and beautiful woman I know 💖";
+                const typewriterEl = document.getElementById('typewriter');
+                let i = 0;
+                
+                if (typewriterEl) {
+                    typewriterEl.innerHTML = '';
+                    
+                    function type() {
+                        if (i < text.length) {
+                            typewriterEl.innerHTML += text.charAt(i);
+                            i++;
+                            setTimeout(type, 50);
+                        }
+                    }
+                    
+                    type();
+                }
+            }
+            
+            // Dark mode toggle
+            const darkToggle = document.getElementById('darkToggle');
+            if (darkToggle) {
+                darkToggle.onclick = function() {
+                    document.body.classList.toggle('dark');
+                    darkToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+                };
+            }
+            
+            // Slider functionality
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            let currentIndex = 0;
+            
+            function showSlide(index) {
+                slides.forEach(function(slide, i) {
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.onclick = function() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    showSlide(currentIndex);
+                };
+            }
+            
+            if (prevBtn) {
+                prevBtn.onclick = function() {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    showSlide(currentIndex);
+                };
+            }
+            
+            // Auto slide
+            setInterval(function() {
+                if (slides.length > 0 && !app.classList.contains('hidden')) {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    showSlide(currentIndex);
+                }
+            }, 5000);
+            
+            // Love counter
+            const loveCounter = document.getElementById('loveCounter');
+            const loveCount = document.getElementById('loveCount');
+            let love = parseInt(localStorage.getItem('love')) || 0;
+            
+            if (loveCount) {
+                loveCount.textContent = love;
+            }
+            
+            if (loveCounter) {
+                loveCounter.onclick = function() {
+                    love++;
+                    if (loveCount) {
+                        loveCount.textContent = love;
+                    }
+                    localStorage.setItem('love', love);
+                };
+            }
+            
+            // Random messages
+            const newMessageBtn = document.getElementById('newMessage');
+            const dynamicMessage = document.getElementById('dynamicMessage');
+            const messages = [
+                "You make work feel lighter ✨",
+                "Your smile changes everything 💖",
+                "You are rare and unforgettable 🌹",
+                "Ann, you are appreciated more than you know 💫",
+                "Every day with you is a blessing 🌺"
+            ];
+            
+            if (newMessageBtn && dynamicMessage) {
+                newMessageBtn.onclick = function() {
+                    const random = Math.floor(Math.random() * messages.length);
+                    dynamicMessage.textContent = messages[random];
+                };
+            }
+            
+            // Confetti
+            const confettiBtn = document.getElementById('confettiBtn');
+            if (confettiBtn) {
+                confettiBtn.onclick = function() {
+                    for (let i = 0; i < 50; i++) {
+                        setTimeout(function() {
+                            const conf = document.createElement('div');
+                            conf.style.position = 'fixed';
+                            conf.style.width = Math.random() * 10 + 5 + 'px';
+                            conf.style.height = conf.style.width;
+                            conf.style.background = 'hsl(' + Math.random() * 360 + ', 100%, 50%)';
+                            conf.style.left = Math.random() * 100 + '%';
+                            conf.style.top = '-20px';
+                            conf.style.borderRadius = '50%';
+                            conf.style.pointerEvents = 'none';
+                            conf.style.zIndex = '9999';
+                            conf.style.transition = 'top 3s linear';
+                            document.body.appendChild(conf);
+                            
+                            setTimeout(function() {
+                                conf.style.top = '120%';
+                            }, 10);
+                            
+                            setTimeout(function() {
+                                conf.remove();
+                            }, 3000);
+                        }, i * 30);
+                    }
+                };
+            }
+            
+            // Secret modal
+            const secretBtn = document.getElementById('secretBtn');
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.id = 'secretModal';
+            modal.innerHTML = `
+                <div class="modalContent">
+                    <h2>For You 💖</h2>
+                    <p>You are not just the best colleague...<br><br>
+                    You are someone truly special to me.<br><br>
+                    💕 Happy Birthday Ann! 💕</p>
+                    <button id="closeModal">Close</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            if (secretBtn) {
+                secretBtn.onclick = function() {
+                    modal.classList.add('active');
+                };
+            }
+            
+            // Close modal
+            modal.onclick = function(e) {
+                if (e.target.id === 'closeModal' || e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            };
+            
+            // Make sure intro is visible and app is hidden
+            if (intro) {
+                intro.style.display = 'flex';
+            }
+            if (app) {
+                app.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>            z-index: 9999;
         }
 
         .intro-box {
@@ -3550,6 +4085,7 @@
     </script>
 </body>
     </html>
+
 
 
 
