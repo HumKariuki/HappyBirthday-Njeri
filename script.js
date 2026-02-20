@@ -1,40 +1,210 @@
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM loaded"); // Debug line
-
-    // DOM Elements
-    const intro = document.getElementById("introScreen");
-    const app = document.querySelector(".app-container");
-    const music = document.getElementById("bgMusic");
-    const darkToggle = document.getElementById("darkToggle");
-    const typewriterEl = document.getElementById("typewriter");
-    const loveCountEl = document.getElementById("loveCount");
-    const loveCounter = document.querySelector(".love-counter");
-    const newMessageBtn = document.getElementById("newMessage");
-    const dynamicMessage = document.getElementById("dynamicMessage");
-    const confettiBtn = document.getElementById("confettiBtn");
-    const secretBtn = document.getElementById("secretBtn");
-    const prevBtn = document.getElementById("prev");
-    const nextBtn = document.getElementById("next");
-    const currentSlideSpan = document.getElementById("currentSlide");
-    const totalSlidesSpan = document.getElementById("totalSlides");
-    const enterBtn = document.getElementById("enterBtn");
-
-    console.log("Enter button:", enterBtn); // Debug line
-
-    // Slides
-    const slides = document.querySelectorAll(".slide");
-    let currentIndex = 0;
+// Wait for everything to load
+window.addEventListener('load', function() {
+    console.log('Page loaded - Starting app...');
     
-    // Update total slides count
-    if (totalSlidesSpan) {
-        totalSlidesSpan.textContent = slides.length;
+    // Get elements
+    const intro = document.getElementById('introScreen');
+    const mainApp = document.getElementById('mainApp');
+    const enterBtn = document.getElementById('enterBtn');
+    
+    // Check if elements exist
+    if (!intro || !mainApp || !enterBtn) {
+        console.error('Required elements not found!');
+        return;
     }
-
-    // ================= INTRO SCREEN =================
-    if (enterBtn) {
-        enterBtn.addEventListener("click", function() {
-            console.log("Enter button clicked"); // Debug line
+    
+    // ENTER BUTTON - DIRECT CLICK HANDLER
+    enterBtn.onclick = function() {
+        console.log('Enter button clicked!');
+        
+        // Hide intro
+        intro.style.display = 'none';
+        
+        // Show main app
+        mainApp.style.display = 'block';
+        
+        // Initialize everything
+        initApp();
+    };
+    
+    // Initialize app
+    function initApp() {
+        console.log('Initializing app...');
+        
+        // Create photo grid
+        createPhotoGrid();
+        
+        // Setup love counter
+        setupLoveCounter();
+        
+        // Setup message changer
+        setupMessageChanger();
+        
+        // Setup celebrate button
+        setupCelebrateButton();
+        
+        // Setup secret modal
+        setupSecretModal();
+    }
+    
+    // Create photo grid
+    function createPhotoGrid() {
+        const grid = document.getElementById('photoGrid');
+        if (!grid) return;
+        
+        // Clear grid
+        grid.innerHTML = '';
+        
+        // Add 9 photo items
+        for (let i = 1; i <= 9; i++) {
+            const item = document.createElement('div');
+            item.className = 'photo-item';
             
+            // Different emoji for each
+            const emojis = ['💖', '✨', '🌟', '💕', '💗', '💓', '💘', '💝', '💞'];
+            item.textContent = emojis[i-1];
+            
+            // Add click handler
+            item.onclick = function() {
+                createMiniConfetti();
+                alert(`Beautiful memory ${i} 💖`);
+            };
+            
+            grid.appendChild(item);
+        }
+    }
+    
+    // Setup love counter
+    function setupLoveCounter() {
+        const loveBox = document.getElementById('loveBox');
+        const loveCount = document.getElementById('loveCount');
+        let count = 0;
+        
+        if (loveBox && loveCount) {
+            loveBox.onclick = function() {
+                count++;
+                loveCount.textContent = count;
+                
+                // Create heart pop
+                createHeart();
+            };
+        }
+    }
+    
+    // Setup message changer
+    function setupMessageChanger() {
+        const btn = document.getElementById('newMessageBtn');
+        const message = document.getElementById('mainMessage');
+        
+        const messages = [
+            "You make work feel lighter ✨",
+            "Your smile changes everything 💖",
+            "You are rare and unforgettable 🌹",
+            "Every day with you is a blessing 🌺",
+            "You bring sunshine to the office ☀️",
+            "Your kindness knows no bounds 💝"
+        ];
+        
+        if (btn && message) {
+            btn.onclick = function() {
+                const random = Math.floor(Math.random() * messages.length);
+                message.textContent = messages[random];
+                createMiniConfetti();
+            };
+        }
+    }
+    
+    // Setup celebrate button
+    function setupCelebrateButton() {
+        const btn = document.getElementById('celebrateBtn');
+        
+        if (btn) {
+            btn.onclick = function() {
+                createConfetti();
+            };
+        }
+    }
+    
+    // Setup secret modal
+    function setupSecretModal() {
+        const secretBtn = document.getElementById('secretBtn');
+        const modal = document.getElementById('secretModal');
+        const closeBtn = document.getElementById('closeModal');
+        
+        if (secretBtn && modal) {
+            secretBtn.onclick = function() {
+                modal.style.display = 'flex';
+            };
+        }
+        
+        if (closeBtn && modal) {
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            };
+            
+            // Close when clicking outside
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        }
+    }
+    
+    // Create confetti
+    function createConfetti() {
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+                createConfettiPiece();
+            }, i * 20);
+        }
+    }
+    
+    function createMiniConfetti() {
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                createConfettiPiece();
+            }, i * 30);
+        }
+    }
+    
+    function createConfettiPiece() {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.width = Math.random() * 10 + 5 + 'px';
+        confetti.style.height = confetti.style.width;
+        confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => {
+            confetti.remove();
+        }, 3000);
+    }
+    
+    // Create heart pop
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.left = '50%';
+        heart.style.top = '50%';
+        heart.style.fontSize = '40px';
+        heart.style.zIndex = '10000';
+        heart.style.pointerEvents = 'none';
+        heart.style.animation = 'fall 1s ease-out';
+        
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 1000);
+    }
+    
+    console.log('App ready - waiting for Enter button...');
+});            
             // Hide intro screen
             if (intro) {
                 intro.style.display = "none";
@@ -639,5 +809,6 @@ document.addEventListener("click",e=>{
 });
 
 });
+
 
 
