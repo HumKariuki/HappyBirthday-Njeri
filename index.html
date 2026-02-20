@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ann 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- INTRO SCREEN -->
+<div id="introScreen">
+    <h1>For Ann 💖</h1>
+    <button id="enterBtn">Enter</button>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="heartsCanvas"></canvas>
+<canvas id="confettiCanvas"></canvas>
+
+<button id="darkToggle">🌙</button>
+
+<div class="app-container hidden">
+
+    <section class="hero">
+        <h1>Happy Birthday Ann 🎂</h1>
+        <p id="typewriter"></p>
+        <h3>✨ The Best Colleague & A Beautiful Soul ✨</h3>
+    </section>
+
+    <!-- PHOTO SLIDER -->
+    <section class="slider">
+        <div class="slides">
+            <img src="images/photo1.jpg" class="slide active">
+            <img src="images/photo2.jpg" class="slide">
+            <img src="images/photo3.jpg" class="slide">
+            <img src="images/photo4.jpg" class="slide">
+        </div>
+        <div class="controls">
+            <button id="prev">⟨</button>
+            <button id="next">⟩</button>
+        </div>
+    </section>
+
+    <!-- MESSAGE BOX -->
+    <section class="message-box">
+        <p id="dynamicMessage">
+            You make work brighter and life softer 💖
+        </p>
+        <button id="newMessage">💌 New Message</button>
+    </section>
+
+    <!-- INTERACTIONS -->
+    <section class="interactive">
+        <div class="love-counter">
+            ❤️ <span id="loveCount">0</span>
+        </div>
+        <button id="confettiBtn">Celebrate 🎉</button>
+        <button id="secretBtn">Secret</button>
+    </section>
+
+    <footer>
+        Made specially for you Ann 💖
+    </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
