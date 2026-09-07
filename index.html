@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🌸 For My Love – Ann</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <title>🌹 For Ann – My Eternal Muse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
     <style>
+        /* ── reset & base ── */
         * {
             margin: 0;
             padding: 0;
@@ -14,224 +17,241 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            background: radial-gradient(circle at 20% 30%, #fce4ec, #f3c4d0);
             font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            transition: background 0.4s;
+            transition: background 0.5s;
+            position: relative;
         }
 
         body.dark {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            background: radial-gradient(circle at 20% 30%, #1a1a2e, #0f0f1f);
         }
 
-        /* ===== INTRO SCREEN ===== */
+        /* floating particles (modern touch) */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particles span {
+            position: absolute;
+            font-size: 1.6rem;
+            color: rgba(255, 46, 99, 0.12);
+            animation: floatParticle 18s infinite linear;
+            bottom: -80px;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+            100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ── intro screen ── */
         #introScreen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, #141e30, #243b55);
+            inset: 0;
+            background: rgba(10, 8, 18, 0.92);
+            backdrop-filter: blur(18px);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.8s ease;
+            text-align: center;
+            padding: 2rem;
+            transition: opacity 1s ease, transform 0.8s ease;
         }
-
         #introScreen.hide {
             opacity: 0;
+            transform: scale(1.05);
             pointer-events: none;
-        }
-
-        .intro-box {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            padding: 50px 40px;
-            border-radius: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            max-width: 420px;
-            width: 90%;
         }
 
         .intro-box h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            color: #fff;
-            margin-bottom: 10px;
-            text-shadow: 0 0 30px rgba(255, 46, 99, 0.5);
-        }
-
-        .intro-box p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-
-        #enterBtn {
-            background: linear-gradient(135deg, #ff2e63, #ff6b81);
-            color: #fff;
-            border: none;
-            padding: 16px 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(255, 46, 99, 0.4);
-        }
-
-        #enterBtn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 46, 99, 0.6);
-        }
-
-        #enterBtn:active {
-            transform: scale(0.95);
-        }
-
-        /* ===== MAIN APP ===== */
-        #mainApp {
-            width: 100%;
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            border-radius: 40px;
-            padding: 30px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-            display: none;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        body.dark #mainApp {
-            background: rgba(20, 20, 40, 0.7);
-            border-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* ===== HEADER ===== */
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .header h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(2.5rem, 7vw, 3.8rem);
-            background: linear-gradient(135deg, #ff2e63, #b83b5e);
+            font-size: clamp(3.8rem, 14vw, 6rem);
+            background: linear-gradient(135deg, #ff2e63, #ff9a9e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 60px rgba(255, 46, 99, 0.3);
+            letter-spacing: 2px;
+        }
+        .intro-box .sub {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+        .intro-box .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff2e63, transparent);
+            margin: 1.2rem auto 2rem;
+        }
+        #enterBtn {
+            padding: 1rem 3.8rem;
+            border: none;
+            border-radius: 60px;
+            background: linear-gradient(135deg, #ff2e63, #b83b5e);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(255, 46, 99, 0.35);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            letter-spacing: 1px;
+        }
+        #enterBtn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 16px 50px rgba(255, 46, 99, 0.55);
+        }
+        #enterBtn:active {
+            transform: scale(0.96);
         }
 
-        .header .sub {
-            font-size: 1.1rem;
-            color: #555;
-            margin-top: 5px;
-            background: rgba(255, 255, 255, 0.5);
+        /* ── main app ── */
+        #mainApp {
+            width: 100%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 56px;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            position: relative;
+            z-index: 5;
+            transition: all 0.4s;
+        }
+        #mainApp.visible {
+            display: block;
+        }
+
+        body.dark #mainApp {
+            background: rgba(18, 16, 30, 0.55);
+            border-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ── header ── */
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.8rem, 9vw, 4.6rem);
+            background: linear-gradient(135deg, #ff2e63, #d6336c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .hero .tagline {
+            font-size: 1.05rem;
+            color: #3d2c3a;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
             display: inline-block;
-            padding: 5px 25px;
-            border-radius: 30px;
+            padding: 0.4rem 2.2rem;
+            border-radius: 40px;
+            margin-top: 0.4rem;
+            font-weight: 400;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        body.dark .hero .tagline {
+            color: #e8d8e0;
+            background: rgba(0, 0, 0, 0.25);
         }
 
-        body.dark .header .sub {
-            color: #ddd;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        /* ===== PRAISE GRID ===== */
+        /* ── praise grid (modern glass) ── */
         .praise-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
+            gap: 1.2rem;
+            margin: 2rem 0;
         }
-
         .praise-card {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 20px 15px;
-            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(6px);
+            padding: 1.6rem 0.8rem;
+            border-radius: 30px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.35s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
         }
-
         .praise-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 46, 99, 0.2);
         }
-
         body.dark .praise-card {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.04);
         }
-
         body.dark .praise-card:hover {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.08);
         }
-
         .praise-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
+            font-size: 2.6rem;
+            margin-bottom: 0.3rem;
         }
-
         .praise-card h4 {
             font-size: 1rem;
             font-weight: 600;
-            color: #1a1a2e;
+            color: #1f1a2a;
         }
-
         body.dark .praise-card h4 {
-            color: #f0e6e6;
+            color: #f0e6ea;
         }
-
         .praise-card p {
             font-size: 0.85rem;
-            color: #666;
-            margin-top: 4px;
+            opacity: 0.75;
+            margin-top: 0.2rem;
+            color: #3d2c3a;
         }
-
         body.dark .praise-card p {
-            color: #aaa;
+            color: #bfb0ba;
         }
 
-        /* ===== SLIDER ===== */
+        /* ── slider ── */
         .slider-section {
-            margin: 30px 0;
+            margin: 2.2rem 0;
         }
-
         .slider-container {
-            border-radius: 30px;
+            border-radius: 36px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            position: relative;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
             aspect-ratio: 16 / 10;
-            max-height: 420px;
-            background: #1a1a2e;
+            max-height: 460px;
+            background: #1a1420;
+            position: relative;
         }
-
         .slides-wrapper {
             width: 100%;
             height: 100%;
             position: relative;
         }
-
         .slide {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
-
         .slide.active {
             opacity: 1;
         }
@@ -239,455 +259,375 @@
         .slider-controls {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 18px;
+            gap: 1.2rem;
+            margin-top: 1.2rem;
         }
-
         .slider-btn {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border: none;
             border-radius: 50%;
-            background: #ff2e63;
+            background: linear-gradient(135deg, #ff2e63, #d6336c);
             color: #fff;
             font-size: 1.4rem;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 46, 99, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 46, 99, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
         .slider-btn:hover {
             transform: scale(1.08);
-            background: #e01a4f;
+            box-shadow: 0 10px 30px rgba(255, 46, 99, 0.4);
         }
-
         .slider-indicator {
             text-align: center;
-            margin-top: 12px;
+            margin-top: 0.8rem;
             font-weight: 600;
             color: #b83b5e;
             font-size: 0.95rem;
+            letter-spacing: 1px;
         }
-
         body.dark .slider-indicator {
             color: #ff8aa1;
         }
 
-        /* ===== MESSAGE BOARD ===== */
-        .message-board {
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 30px;
-            padding: 25px;
-            margin: 25px 0;
+        /* ── deep romantic message card ── */
+        .romantic-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(255, 200, 210, 0.15));
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 2.2rem 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+            transition: 0.3s;
+        }
+        body.dark .romantic-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        .romantic-card .heart-line {
+            font-size: 1.8rem;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0.6;
+            letter-spacing: 8px;
         }
-
-        body.dark .message-board {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        #dynamicMessage {
+        #deepMessage {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.6rem;
-            min-height: 70px;
+            font-size: clamp(1.5rem, 4.5vw, 2.4rem);
+            line-height: 1.7;
+            text-align: center;
+            color: #1f1a2a;
+            padding: 0.5rem 0;
+            min-height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1a1a2e;
-            line-height: 1.5;
+            transition: 0.3s;
         }
-
-        body.dark #dynamicMessage {
-            color: #f0e6e6;
+        body.dark #deepMessage {
+            color: #f5e6ec;
         }
-
-        .message-actions {
+        .romantic-actions {
             display: flex;
-            gap: 12px;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-top: 1.2rem;
         }
-
-        .btn {
-            padding: 10px 28px;
+        .btn-romantic {
+            padding: 0.7rem 2.2rem;
             border: none;
             border-radius: 40px;
-            background: #ff2e63;
+            background: linear-gradient(135deg, #ff2e63, #b83b5e);
             color: #fff;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 6px 18px rgba(255, 46, 99, 0.15);
         }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            background: #e01a4f;
-            box-shadow: 0 8px 20px rgba(255, 46, 99, 0.3);
+        .btn-romantic:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 46, 99, 0.3);
         }
-
-        .btn-outline {
+        .btn-outline-romantic {
             background: transparent;
             border: 2px solid #ff2e63;
             color: #ff2e63;
+            box-shadow: none;
         }
-
-        .btn-outline:hover {
+        .btn-outline-romantic:hover {
             background: #ff2e63;
             color: #fff;
         }
-
-        body.dark .btn-outline {
+        body.dark .btn-outline-romantic {
             border-color: #ff8aa1;
             color: #ff8aa1;
         }
-
-        body.dark .btn-outline:hover {
+        body.dark .btn-outline-romantic:hover {
             background: #ff8aa1;
             color: #1a1a2e;
         }
 
-        /* ===== INTERACTIVE ===== */
+        /* ── interactive row ── */
         .interactive-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            margin: 25px 0;
+            gap: 1.8rem;
+            margin: 2rem 0 1.5rem;
         }
-
         .love-box {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(6px);
+            padding: 0.8rem 2rem;
             border-radius: 60px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 1rem;
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .love-box:hover {
             transform: scale(1.03);
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.5);
         }
-
         body.dark .love-box {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.04);
         }
-
         body.dark .love-box:hover {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.08);
         }
-
         .love-count {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #ff2e63;
             min-width: 40px;
             text-align: center;
         }
-
         .love-label {
             font-weight: 500;
-            color: #333;
+            color: #2d1f2a;
         }
-
         body.dark .love-label {
-            color: #ddd;
+            color: #dcc8d0;
         }
 
         .secret-btn {
             background: linear-gradient(135deg, #6c5ce7, #a363d9);
             color: #fff;
             border: none;
-            padding: 12px 30px;
+            padding: 0.8rem 2.4rem;
             border-radius: 60px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 1rem;
-            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 6px 24px rgba(108, 92, 231, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .secret-btn:hover {
             transform: scale(1.04);
-            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.5);
+            box-shadow: 0 10px 35px rgba(108, 92, 231, 0.4);
         }
 
-        /* ===== FOOTER ===== */
-        .footer {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark .footer {
-            background: rgba(0, 0, 0, 0.15);
-        }
-
-        .footer p {
-            font-weight: 500;
-            color: #333;
-        }
-
-        body.dark .footer p {
-            color: #ddd;
-        }
-
-        .footer small {
-            color: #666;
-            display: block;
-            margin-top: 5px;
-        }
-
-        body.dark .footer small {
-            color: #999;
-        }
-
-        /* ===== DARK TOGGLE ===== */
-        #darkToggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 48px;
-            height: 48px;
-            border: none;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
+        /* ── footer ── */
+        .app-footer {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(6px);
-            font-size: 1.3rem;
-            cursor: pointer;
-            z-index: 500;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        body.dark .app-footer {
+            background: rgba(0, 0, 0, 0.12);
+        }
+        .app-footer p {
+            font-weight: 500;
+            color: #2d1f2a;
+        }
+        body.dark .app-footer p {
+            color: #dcc8d0;
+        }
+        .app-footer small {
+            opacity: 0.6;
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 0.85rem;
         }
 
-        #darkToggle:hover {
-            transform: rotate(180deg);
-        }
-
-        /* ===== MODAL ===== */
+        /* ── secret modal ── */
         #secretModal {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
+            inset: 0;
             background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px);
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
-            padding: 20px;
+            z-index: 3000;
+            padding: 1.5rem;
         }
-
         #secretModal.show {
             display: flex;
         }
-
         .modal-card {
-            background: linear-gradient(135deg, #ff2e63, #b83b5e);
-            padding: 40px 30px;
-            border-radius: 50px;
-            max-width: 420px;
+            background: linear-gradient(145deg, #ff2e63, #b83b5e);
+            padding: 2.8rem 2.2rem;
+            border-radius: 56px;
+            max-width: 440px;
             width: 100%;
             text-align: center;
             color: #fff;
             animation: modalPop 0.5s ease;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
         }
-
         @keyframes modalPop {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(0.85); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
-
         .modal-card h2 {
             font-family: 'Dancing Script', cursive;
             font-size: 2.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
-
         .modal-card p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
-            margin: 20px 0;
+            margin: 1.5rem 0;
             opacity: 0.95;
         }
-
         .modal-card .close-modal {
             background: #fff;
             color: #b83b5e;
             border: none;
-            padding: 12px 35px;
+            padding: 0.7rem 2.8rem;
             border-radius: 40px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: 0.3s;
             font-size: 1rem;
         }
-
         .modal-card .close-modal:hover {
             transform: scale(1.05);
         }
 
-        /* ===== HEART POP ===== */
+        /* ── dark toggle ── */
+        #darkToggle {
+            position: fixed;
+            top: 1.2rem;
+            right: 1.2rem;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 500;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            color: #1f1a2a;
+        }
+        body.dark #darkToggle {
+            background: rgba(255, 255, 255, 0.06);
+            color: #f0e6ea;
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        #darkToggle:hover {
+            transform: rotate(180deg);
+        }
+
+        /* ── heart pop ── */
         .heart-pop {
             position: fixed;
             pointer-events: none;
-            font-size: 3rem;
+            font-size: 3.6rem;
             z-index: 999;
-            animation: heartFloat 0.8s ease-out forwards;
+            animation: heartFloat 0.9s ease-out forwards;
         }
-
         @keyframes heartFloat {
-            0% {
-                transform: translate(-50%, -50%) scale(0.3);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -180%) scale(1.8);
-                opacity: 0;
-            }
+            0% { transform: translate(-50%, -50%) scale(0.2); opacity: 1; }
+            100% { transform: translate(-50%, -200%) scale(1.8); opacity: 0; }
         }
 
-        /* ===== CONFETTI ===== */
+        /* ── confetti ── */
         .confetti-piece {
             position: fixed;
             pointer-events: none;
             z-index: 999;
-            animation: confettiFall 3s linear forwards;
+            animation: confettiFall 3.2s linear forwards;
         }
-
         @keyframes confettiFall {
-            0% {
-                transform: translateY(-100%) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(720deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(800deg); opacity: 0; }
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 600px) {
-            #mainApp {
-                padding: 20px;
-                border-radius: 28px;
-            }
-
-            .praise-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .slider-container {
-                aspect-ratio: 4 / 3;
-                max-height: 280px;
-            }
-
-            .intro-box {
-                padding: 35px 25px;
-            }
-
-            .intro-box h1 {
-                font-size: 3rem;
-            }
-
-            .modal-card {
-                padding: 30px 20px;
-            }
-
-            .modal-card h2 {
-                font-size: 2.2rem;
-            }
+        /* ── responsive ── */
+        @media (max-width: 700px) {
+            #mainApp { padding: 1.5rem; border-radius: 36px; }
+            .praise-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+            .slider-container { aspect-ratio: 4/3; max-height: 280px; }
+            .romantic-card { padding: 1.5rem; }
+            #deepMessage { font-size: 1.4rem; min-height: 100px; }
         }
-
-        @media (max-width: 400px) {
-            .praise-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            #dynamicMessage {
-                font-size: 1.3rem;
-            }
-
-            .love-box {
-                padding: 10px 18px;
-            }
+        @media (max-width: 480px) {
+            .praise-grid { grid-template-columns: 1fr; }
+            .interactive-row { flex-direction: column; gap: 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .modal-card { padding: 2rem 1.2rem; }
+            .modal-card h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== INTRO SCREEN ===== -->
+    <!-- floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- INTRO -->
     <div id="introScreen">
         <div class="intro-box">
             <h1>For Ann 🌹</h1>
-            <p>a celebration of the most beautiful soul</p>
+            <div class="sub">eternal muse · gentle soul</div>
+            <div class="divider"></div>
             <button id="enterBtn">Open With Love ❤️</button>
         </div>
     </div>
 
-    <!-- ===== DARK MODE TOGGLE ===== -->
+    <!-- dark toggle -->
     <button id="darkToggle">🌙</button>
 
-    <!-- ===== MAIN APP ===== -->
+    <!-- MAIN APP -->
     <div id="mainApp">
 
-        <!-- HEADER -->
-        <div class="header">
+        <!-- header -->
+        <div class="hero">
             <h1>✨ My Beautiful Ann ✨</h1>
-            <div class="sub">❤️ the one who makes everything brighter</div>
+            <div class="tagline">❤️ the one who makes everything brighter</div>
         </div>
 
-        <!-- PRAISE GRID -->
+        <!-- praise grid -->
         <div class="praise-grid">
-            <div class="praise-card">
-                <div class="icon">🌸</div>
-                <h4>Graceful</h4>
-                <p>every move is pure elegance</p>
-            </div>
-            <div class="praise-card">
-                <div class="icon">🍳</div>
-                <h4>Chef's Kiss</h4>
-                <p>your food is pure love</p>
-            </div>
-            <div class="praise-card">
-                <div class="icon">💖</div>
-                <h4>Caring Soul</h4>
-                <p>you heal with your heart</p>
-            </div>
-            <div class="praise-card">
-                <div class="icon">🌞</div>
-                <h4>Weekend Joy</h4>
-                <p>every moment with you is magic</p>
-            </div>
+            <div class="praise-card"><div class="icon">🌸</div><h4>Graceful</h4><p>every move is pure elegance</p></div>
+            <div class="praise-card"><div class="icon">🍳</div><h4>Chef's Kiss</h4><p>your food is pure love</p></div>
+            <div class="praise-card"><div class="icon">💖</div><h4>Caring Soul</h4><p>you heal with your heart</p></div>
+            <div class="praise-card"><div class="icon">🌞</div><h4>Weekend Joy</h4><p>every moment with you is magic</p></div>
         </div>
 
-        <!-- SLIDER -->
+        <!-- slider -->
         <div class="slider-section">
             <div class="slider-container">
                 <div class="slides-wrapper" id="sliderWrapper">
@@ -708,16 +648,22 @@
             <div class="slider-indicator" id="slideIndicator">1 / 8</div>
         </div>
 
-        <!-- MESSAGE BOARD -->
-        <div class="message-board">
-            <div id="dynamicMessage">💖 you are the most beautiful soul I know</div>
-            <div class="message-actions">
-                <button class="btn" id="newMsgBtn">💌 New Praise</button>
-                <button class="btn btn-outline" id="resetMsgBtn">↺ Reset</button>
+        <!-- DEEP ROMANTIC MESSAGE CARD (all praises here) -->
+        <div class="romantic-card">
+            <div class="heart-line">💗 ✦ 💗 ✦ 💗</div>
+            <div id="deepMessage">
+                ✨ Your light skin glows like morning dew,<br>
+                your eyes hold galaxies of tenderness,<br>
+                your smile is my sunrise, your humility my anchor.<br>
+                You are the most caring, beautiful soul I know.
+            </div>
+            <div class="romantic-actions">
+                <button class="btn-romantic" id="newDeepMsg">🌹 Another praise</button>
+                <button class="btn-romantic btn-outline-romantic" id="resetDeepMsg">↺ original</button>
             </div>
         </div>
 
-        <!-- INTERACTIVE ROW -->
+        <!-- interactive row -->
         <div class="interactive-row">
             <div class="love-box" id="loveBox">
                 <span class="love-label">❤️ Love</span>
@@ -726,24 +672,25 @@
             <button class="secret-btn" id="secretBtn">💝 Secret Message</button>
         </div>
 
-        <!-- FOOTER -->
-        <div class="footer">
+        <!-- footer -->
+        <div class="app-footer">
             <p>✨ for Ann – with all my heart ✨</p>
             <small>HumTech Solutions ❤️ +254 721 112 164</small>
         </div>
     </div>
 
-    <!-- ===== SECRET MODAL ===== -->
+    <!-- SECRET MODAL -->
     <div id="secretModal">
         <div class="modal-card">
             <h2>My Dear Ann</h2>
             <p>
-                You are not just the best colleague…<br>
-                you are the sunshine of my days.<br>
-                Your beauty, your kindness, your laugh –<br>
-                they make life magical.<br>
+                Your light skin glows like the softest dawn.<br>
+                Your eyes hold the depth of a thousand stars.<br>
+                Your smile – it heals, it warms, it captivates.<br>
+                Your humbleness makes you even more radiant.<br>
+                You are the most caring, loving soul I've ever known.<br>
                 <br>
-                💖 Happy Birthday, my love 💖
+                💖 Happy Birthday, my eternal muse 💖
             </p>
             <button class="close-modal" id="closeModalBtn">Close</button>
         </div>
@@ -753,58 +700,70 @@
         (function() {
             "use strict";
 
-            // ===== DOM REFS =====
-            const introScreen = document.getElementById('introScreen');
+            // DOM refs
+            const intro = document.getElementById('introScreen');
             const mainApp = document.getElementById('mainApp');
             const enterBtn = document.getElementById('enterBtn');
             const darkToggle = document.getElementById('darkToggle');
 
-            // Slider
+            // slider
             const slides = document.querySelectorAll('.slide');
             const prevBtn = document.getElementById('prevSlide');
             const nextBtn = document.getElementById('nextSlide');
             const indicator = document.getElementById('slideIndicator');
-            let currentSlide = 0;
+            let current = 0;
             let autoInterval = null;
 
-            // Message
-            const dynamicMsg = document.getElementById('dynamicMessage');
-            const newMsgBtn = document.getElementById('newMsgBtn');
-            const resetMsgBtn = document.getElementById('resetMsgBtn');
+            // deep message
+            const deepMsg = document.getElementById('deepMessage');
+            const newDeepBtn = document.getElementById('newDeepMsg');
+            const resetDeepBtn = document.getElementById('resetDeepMsg');
 
-            // Love
+            // love
             const loveCountEl = document.getElementById('loveCount');
             let loveCount = parseInt(localStorage.getItem('annLove')) || 0;
 
-            // Modal
+            // modal
             const modal = document.getElementById('secretModal');
             const secretBtn = document.getElementById('secretBtn');
             const closeModalBtn = document.getElementById('closeModalBtn');
 
-            // ===== PRAISE MESSAGES =====
-            const praises = [
-                "💖 you are the most beautiful soul I know",
-                "🌸 your smile lights up my world",
-                "🍳 every dish you make is pure magic",
-                "🌞 weekends with you are my heaven",
-                "✨ you are grace, warmth, and love",
-                "💕 your heart is pure gold",
-                "🌹 you make everything better, just by being you",
-                "🌟 you are my favourite daydream",
-                "💗 your kindness knows no bounds",
-                "🌺 you are rare and unforgettable"
+            // ---- deep romantic messages (include all praises) ----
+            const deepPraises = [
+                `✨ Your light skin glows like morning dew,<br>your eyes hold galaxies of tenderness,<br>your smile is my sunrise, your humility my anchor.<br>You are the most caring, beautiful soul I know.`,
+                `🌹 Your radiance outshines the stars,<br>your gentleness calms every storm.<br>Your smile—it rewrites my whole world.<br>And your humble heart makes you even more beautiful.`,
+                `🌸 The way you care, the way you love,<br>the way your eyes sparkle when you laugh—<br>it's poetry in motion.<br>Your light skin, your grace, your soul—pure magic.`,
+                `💖 You are not just beautiful;<br>you are the kind of beautiful that stays.<br>Your smile, your eyes, your gentle voice—<br>they are my favourite melody.`,
+                `🌺 Your humility is your crown,<br>your kindness is your power.<br>Every glance from you feels like a blessing.<br>You are the most caring woman I know.`,
+                `✨ Your skin glows like the softest pearl,<br>your eyes are deep oceans of love.<br>Your smile heals, your heart gives,<br>and your humbleness makes me adore you more.`
             ];
-            let currentMsgIndex = 0;
+            let currentDeepIndex = 0;
 
-            // ===== ENTER BUTTON =====
+            // ---- particles ----
+            (function createParticles() {
+                const container = document.getElementById('particles');
+                const icons = ['❤️', '🌸', '💖', '✨', '🌹', '💕', '🌺'];
+                for (let i = 0; i < 20; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = icons[i % icons.length];
+                    span.style.left = Math.random() * 100 + '%';
+                    span.style.fontSize = (1.2 + Math.random() * 2) + 'rem';
+                    span.style.animationDuration = (14 + Math.random() * 18) + 's';
+                    span.style.animationDelay = (Math.random() * 16) + 's';
+                    container.appendChild(span);
+                }
+            })();
+
+            // ---- ENTER ----
             enterBtn.addEventListener('click', function() {
-                introScreen.classList.add('hide');
+                intro.classList.add('hide');
+                mainApp.classList.add('visible');
                 mainApp.style.display = 'block';
                 loveCountEl.textContent = loveCount;
                 startAutoSlide();
             });
 
-            // ===== SLIDER =====
+            // ---- SLIDER ----
             function showSlide(index) {
                 slides.forEach(function(s, i) {
                     s.classList.toggle('active', i === index);
@@ -812,19 +771,19 @@
                 indicator.textContent = (index + 1) + ' / ' + slides.length;
             }
 
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
+            function nextSlideFn() {
+                current = (current + 1) % slides.length;
+                showSlide(current);
             }
 
             function prevSlideFn() {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(currentSlide);
+                current = (current - 1 + slides.length) % slides.length;
+                showSlide(current);
             }
 
             function startAutoSlide() {
                 if (autoInterval) clearInterval(autoInterval);
-                autoInterval = setInterval(nextSlide, 4000);
+                autoInterval = setInterval(nextSlideFn, 4200);
             }
 
             prevBtn.addEventListener('click', function() {
@@ -835,28 +794,28 @@
 
             nextBtn.addEventListener('click', function() {
                 clearInterval(autoInterval);
-                nextSlide();
+                nextSlideFn();
                 startAutoSlide();
             });
 
-            // ===== MESSAGES =====
-            function setRandomMessage() {
+            // ---- DEEP MESSAGE ----
+            function setRandomDeep() {
                 let idx;
                 do {
-                    idx = Math.floor(Math.random() * praises.length);
-                } while (idx === currentMsgIndex && praises.length > 1);
-                currentMsgIndex = idx;
-                dynamicMsg.textContent = praises[idx];
+                    idx = Math.floor(Math.random() * deepPraises.length);
+                } while (idx === currentDeepIndex && deepPraises.length > 1);
+                currentDeepIndex = idx;
+                deepMsg.innerHTML = deepPraises[idx];
             }
 
-            newMsgBtn.addEventListener('click', setRandomMessage);
+            newDeepBtn.addEventListener('click', setRandomDeep);
 
-            resetMsgBtn.addEventListener('click', function() {
-                dynamicMsg.textContent = "💖 you are the most beautiful soul I know";
-                currentMsgIndex = 0;
+            resetDeepBtn.addEventListener('click', function() {
+                deepMsg.innerHTML = deepPraises[0];
+                currentDeepIndex = 0;
             });
 
-            // ===== LOVE COUNTER =====
+            // ---- LOVE COUNTER ----
             const loveBox = document.getElementById('loveBox');
 
             function createHeartPop() {
@@ -866,9 +825,7 @@
                 heart.style.left = '50%';
                 heart.style.top = '50%';
                 document.body.appendChild(heart);
-                setTimeout(function() {
-                    heart.remove();
-                }, 800);
+                setTimeout(function() { heart.remove(); }, 900);
             }
 
             loveBox.addEventListener('click', function() {
@@ -878,7 +835,7 @@
                 createHeartPop();
             });
 
-            // ===== SECRET MODAL =====
+            // ---- SECRET MODAL ----
             secretBtn.addEventListener('click', function() {
                 modal.classList.add('show');
             });
@@ -888,18 +845,16 @@
             });
 
             modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.classList.remove('show');
-                }
+                if (e.target === modal) modal.classList.remove('show');
             });
 
-            // ===== DARK MODE =====
+            // ---- DARK MODE ----
             darkToggle.addEventListener('click', function() {
                 document.body.classList.toggle('dark');
                 darkToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
             });
 
-            // ===== CONFETTI FUNCTION (for celebrate) =====
+            // ---- CONFETTI (double-click footer heart) ----
             function createConfetti(count) {
                 for (let i = 0; i < count; i++) {
                     setTimeout(function() {
@@ -910,33 +865,24 @@
                         piece.style.height = size + 'px';
                         piece.style.left = Math.random() * 100 + '%';
                         piece.style.top = '-10px';
-                        piece.style.background = 'hsl(' + Math.random() * 360 + ', 100%, 60%)';
+                        piece.style.background = 'hsl(' + Math.random() * 360 + ', 100%, 65%)';
                         piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
                         document.body.appendChild(piece);
-                        setTimeout(function() {
-                            piece.remove();
-                        }, 3000);
-                    }, i * 25);
+                        setTimeout(function() { piece.remove(); }, 3200);
+                    }, i * 20);
                 }
             }
 
-            // ===== ADD A CELEBRATE BUTTON TO THE FOOTER? =====
-            // Let's add a hidden celebrate feature: click on the heart in footer
-            const footerHeart = document.querySelector('.footer p');
-            if (footerHeart) {
-                footerHeart.addEventListener('dblclick', function() {
-                    createConfetti(60);
-                });
+            const footerP = document.querySelector('.app-footer p');
+            if (footerP) {
+                footerP.addEventListener('dblclick', function() { createConfetti(70); });
             }
 
-            // ===== SHOW FIRST SLIDE =====
-            showSlide(0);
-
-            // ===== KEYBOARD NAVIGATION =====
+            // ---- keyboard ----
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight') {
                     clearInterval(autoInterval);
-                    nextSlide();
+                    nextSlideFn();
                     startAutoSlide();
                 } else if (e.key === 'ArrowLeft') {
                     clearInterval(autoInterval);
@@ -947,10 +893,11 @@
                 }
             });
 
-            console.log('✨ Website loaded successfully! For Ann ❤️');
-
+            // ---- init ----
+            showSlide(0);
+            loveCountEl.textContent = loveCount;
+            console.log('🌹 For Ann – with eternal love.');
         })();
     </script>
-
 </body>
 </html>
