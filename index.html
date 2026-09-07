@@ -6,7 +6,7 @@
     <title>🌹 For Ann – My Eternal Muse</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         /* ── reset & base ── */
         * {
@@ -31,7 +31,7 @@
             background: radial-gradient(circle at 20% 30%, #1a1a2e, #0f0f1f);
         }
 
-        /* floating particles (modern touch) */
+        /* floating particles */
         .particles {
             position: fixed;
             inset: 0;
@@ -73,7 +73,7 @@
         }
 
         .intro-box h1 {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(3.8rem, 14vw, 6rem);
             background: linear-gradient(135deg, #ff2e63, #ff9a9e);
             -webkit-background-clip: text;
@@ -81,6 +81,7 @@
             background-clip: text;
             text-shadow: 0 0 60px rgba(255, 46, 99, 0.3);
             letter-spacing: 2px;
+            font-weight: 700;
         }
         .intro-box .sub {
             color: rgba(255, 255, 255, 0.6);
@@ -88,6 +89,7 @@
             letter-spacing: 4px;
             margin-top: 0.5rem;
             font-weight: 300;
+            font-family: 'Inter', sans-serif;
         }
         .intro-box .divider {
             width: 80px;
@@ -108,6 +110,7 @@
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.15);
             letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
         }
         #enterBtn:hover {
             transform: scale(1.06);
@@ -149,13 +152,14 @@
             margin-bottom: 2rem;
         }
         .hero h1 {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(2.8rem, 9vw, 4.6rem);
             background: linear-gradient(135deg, #ff2e63, #d6336c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.2;
+            font-weight: 700;
         }
         .hero .tagline {
             font-size: 1.05rem;
@@ -168,13 +172,14 @@
             margin-top: 0.4rem;
             font-weight: 400;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: 'Inter', sans-serif;
         }
         body.dark .hero .tagline {
             color: #e8d8e0;
             background: rgba(0, 0, 0, 0.25);
         }
 
-        /* ── praise grid (modern glass) ── */
+        /* ── praise grid ── */
         .praise-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -211,6 +216,7 @@
             font-size: 1rem;
             font-weight: 600;
             color: #1f1a2a;
+            font-family: 'Inter', sans-serif;
         }
         body.dark .praise-card h4 {
             color: #f0e6ea;
@@ -220,6 +226,7 @@
             opacity: 0.75;
             margin-top: 0.2rem;
             color: #3d2c3a;
+            font-family: 'Inter', sans-serif;
         }
         body.dark .praise-card p {
             color: #bfb0ba;
@@ -230,23 +237,19 @@
             margin: 2.2rem 0;
         }
         .slider-container {
-            border-radius: 36px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
-            background: #1a1420;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.15);
             position: relative;
             width: 100%;
-            max-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            max-height: 450px;
         }
         .slides-wrapper {
             width: 100%;
-            height: 100%;
             position: relative;
-            aspect-ratio: 16 / 10;
-            min-height: 300px;
+            aspect-ratio: 16 / 9;
+            max-height: 450px;
         }
         .slide {
             position: absolute;
@@ -257,8 +260,9 @@
             object-position: center;
             opacity: 0;
             transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            background: #1a1420;
-            padding: 10px;
+            background: rgba(20, 15, 25, 0.4);
+            padding: 8px;
+            border-radius: 30px;
         }
         .slide.active {
             opacity: 1;
@@ -268,34 +272,36 @@
             display: flex;
             justify-content: center;
             gap: 1.2rem;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
         }
         .slider-btn {
-            width: 50px;
-            height: 50px;
+            width: 46px;
+            height: 46px;
             border: none;
             border-radius: 50%;
             background: linear-gradient(135deg, #ff2e63, #d6336c);
             color: #fff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(255, 46, 99, 0.25);
+            box-shadow: 0 4px 15px rgba(255, 46, 99, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Inter', sans-serif;
         }
         .slider-btn:hover {
             transform: scale(1.08);
-            box-shadow: 0 10px 30px rgba(255, 46, 99, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 46, 99, 0.35);
         }
         .slider-indicator {
             text-align: center;
-            margin-top: 0.8rem;
+            margin-top: 0.6rem;
             font-weight: 600;
             color: #b83b5e;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
         }
         body.dark .slider-indicator {
             color: #ff8aa1;
@@ -323,17 +329,18 @@
             letter-spacing: 8px;
         }
         #deepMessage {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.5rem, 4.5vw, 2.4rem);
-            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            line-height: 1.8;
             text-align: center;
             color: #1f1a2a;
             padding: 0.5rem 0;
-            min-height: 140px;
+            min-height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: 0.3s;
+            font-weight: 400;
         }
         body.dark #deepMessage {
             color: #f5e6ec;
@@ -357,6 +364,7 @@
             font-size: 0.95rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 6px 18px rgba(255, 46, 99, 0.15);
+            font-family: 'Inter', sans-serif;
         }
         .btn-romantic:hover {
             transform: translateY(-3px);
@@ -401,6 +409,7 @@
             cursor: pointer;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: 'Inter', sans-serif;
         }
         .love-box:hover {
             transform: scale(1.03);
@@ -440,6 +449,7 @@
             font-size: 1rem;
             box-shadow: 0 6px 24px rgba(108, 92, 231, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Inter', sans-serif;
         }
         .secret-btn:hover {
             transform: scale(1.04);
@@ -455,6 +465,7 @@
             border-radius: 40px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Inter', sans-serif;
         }
         body.dark .app-footer {
             background: rgba(0, 0, 0, 0.12);
@@ -518,9 +529,10 @@
             100% { transform: scale(1); opacity: 1; }
         }
         .modal-card h2 {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
         .modal-card p {
             font-size: 1.05rem;
@@ -528,6 +540,7 @@
             margin: 1.5rem 0;
             opacity: 0.95;
             text-align: left;
+            font-family: 'Inter', sans-serif;
         }
         .modal-card .close-modal {
             background: #fff;
@@ -539,6 +552,7 @@
             cursor: pointer;
             transition: 0.3s;
             font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
         .modal-card .close-modal:hover {
             transform: scale(1.05);
@@ -562,6 +576,7 @@
             transition: all 0.4s;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
             color: #1f1a2a;
+            font-family: 'Inter', sans-serif;
         }
         body.dark #darkToggle {
             background: rgba(255, 255, 255, 0.06);
@@ -601,11 +616,12 @@
         @media (max-width: 700px) {
             #mainApp { padding: 1.5rem; border-radius: 36px; }
             .praise-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-            .slides-wrapper { aspect-ratio: 4/3; min-height: 200px; }
+            .slides-wrapper { aspect-ratio: 4/3; max-height: 300px; }
             .romantic-card { padding: 1.5rem; }
-            #deepMessage { font-size: 1.4rem; min-height: 100px; }
+            #deepMessage { font-size: 1.1rem; min-height: 100px; }
             .modal-card { padding: 2rem 1.5rem; max-height: 85vh; }
             .modal-card p { font-size: 0.95rem; }
+            .slider-container { max-height: 320px; }
         }
         @media (max-width: 480px) {
             .praise-grid { grid-template-columns: 1fr; }
@@ -614,7 +630,10 @@
             .modal-card { padding: 1.5rem 1rem; }
             .modal-card h2 { font-size: 2.2rem; }
             .modal-card p { font-size: 0.9rem; }
-            .slides-wrapper { aspect-ratio: 1/1; min-height: 180px; }
+            .slides-wrapper { aspect-ratio: 1/1; max-height: 250px; }
+            .slider-container { max-height: 270px; }
+            .slide { padding: 4px; }
+            #deepMessage { font-size: 1rem; }
         }
     </style>
 </head>
@@ -704,11 +723,11 @@
             <div class="slider-indicator" id="slideIndicator">1 / 4</div>
         </div>
 
-        <!-- DEEP ROMANTIC MESSAGE CARD (all praises here) -->
+        <!-- DEEP ROMANTIC MESSAGE CARD -->
         <div class="romantic-card">
             <div class="heart-line">💗 ✦ 💗 ✦ 💗</div>
             <div id="deepMessage">
-                ✨ Your light skin glows like morning dew,<br>
+                Your light skin glows like morning dew,<br>
                 your eyes hold galaxies of tenderness,<br>
                 your smile is my sunrise, your humility my anchor.<br>
                 You are the most caring, beautiful soul I know.
@@ -817,19 +836,19 @@
             const secretBtn = document.getElementById('secretBtn');
             const closeModalBtn = document.getElementById('closeModalBtn');
 
-            // ---- deep romantic messages (include all praises) ----
+            // ---- deep romantic messages ----
             const deepPraises = [
-                `✨ There is something quietly extraordinary about you,<br>the kind of beauty that grows deeper the more I know you.<br>Your smile carries warmth, your presence brings peace,<br>and your heart is what makes you truly unforgettable.`,
+                `There is something quietly extraordinary about you,<br>the kind of beauty that grows deeper the more I know you.<br>Your smile carries warmth, your presence brings peace,<br>and your heart is what makes you truly unforgettable.`,
 
-                `🌹 You have a beauty that words struggle to contain,<br>but it is your character that leaves the deepest impression.<br>Your gentleness, your humility, the way you care—<br>these are the things that make you rare.`,
+                `You have a beauty that words struggle to contain,<br>but it is your character that leaves the deepest impression.<br>Your gentleness, your humility, the way you care—<br>these are the things that make you rare.`,
 
-                `🌸 I could admire your beauty a thousand times,<br>but it is your heart that I find myself admiring most.<br>The way you love, the way you care, the way you remain humble—<br>there is something profoundly beautiful about you.`,
+                `I could admire your beauty a thousand times,<br>but it is your heart that I find myself admiring most.<br>The way you love, the way you care, the way you remain humble—<br>there is something profoundly beautiful about you.`,
 
-                `💖 You are the kind of woman whose presence lingers,<br>long after the moment has passed.<br>Your smile, your voice, your warmth—<br>somehow, they find their way into the quietest corners of my heart.`,
+                `You are the kind of woman whose presence lingers,<br>long after the moment has passed.<br>Your smile, your voice, your warmth—<br>somehow, they find their way into the quietest corners of my heart.`,
 
-                `🌺 Your humility speaks louder than beauty ever could,<br>and your kindness reveals the depth of the woman you are.<br>You carry yourself with a gentleness that is rare,<br>and that is one of the many reasons I cherish you.`,
+                `Your humility speaks louder than beauty ever could,<br>and your kindness reveals the depth of the woman you are.<br>You carry yourself with a gentleness that is rare,<br>and that is one of the many reasons I cherish you.`,
 
-                `✨ If beauty were only something seen, it would never be enough to describe you.<br>There is a softness in your spirit and a depth in your heart<br>that makes you beautiful in ways the eyes alone could never understand.<br>You are, in every sense, someone worth cherishing.`
+                `If beauty were only something seen, it would never be enough to describe you.<br>There is a softness in your spirit and a depth in your heart<br>that makes you beautiful in ways the eyes alone could never understand.<br>You are, in every sense, someone worth cherishing.`
             ];
 
             let currentDeepIndex = 0;
@@ -949,7 +968,7 @@
                 darkToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
             });
 
-            // ---- CONFETTI (double-click footer heart) ----
+            // ---- CONFETTI ----
             function createConfetti(count) {
                 for (let i = 0; i < count; i++) {
                     setTimeout(function() {
